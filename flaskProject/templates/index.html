@@ -1,0 +1,45 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de CRM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de CRM</h1>
+        <form action="/register_crm" method="POST">
+            <label for="user">Usuário:</label>
+            <input type="text" id="user" name="user"><br><br>
+
+            <label for="model">Modelo:</label>
+            <input type="text" id="model" name="model"><br><br>
+
+            <label for="sn">SN:</label>
+            <input type="text" id="sn" name="sn"><br><br>
+
+            <label for="access">Acesso:</label>
+            <input type="text" id="access" name="access"><br><br>
+
+            <label for="description">Descrição:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+
+            <label for="solution">Solução:</label><br>
+            <textarea id="solution" name="solution" rows="4" cols="50"></textarea><br><br>
+
+            <label for="assigned_to">Atribuído Para:</label>
+            <select id="assigned_to" name="assigned_to">
+                <option value="Carlos Queiroz">Carlos Queiroz</option>
+                <option value="Carlos Lima">Carlos Lima</option>
+                <option value="Luís Alberto">Luís Alberto</option>
+                <option value="Jonathan Maldini">Jonathan Maldini</option>
+                <option value="Marco Túlio">Marco Túlio</option>
+            </select><br><br>
+
+            <button type="submit" class="btn">Registrar CRM</button>
+        </form>
+    </div>
+</body>
+</html>

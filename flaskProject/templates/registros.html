@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de CRM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Estilo para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 5px;
+            color: #000; /* Cor da fonte do modal */
+        }
+
+        /* Estilo para o balão */
+        .balao {
+            background-color: #007bff; /* Cor de fundo do balão */
+            color: #fff; /* Cor da fonte do balão */
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .balao:hover {
+            background-color: #0056b3; /* Cor de fundo do balão ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registros de CRM</h1>
+
+        {% for crm in registros %}
+        <!-- Balão que ao clicar abre o modal -->
+        <div class="balao" onclick="abrirModal('{{ crm.id }}')">
+            <p>Usuário: {{ crm.user }}</p>
+            <p>Modelo: {{ crm.model }}</p>
+            <p>SN: {{ crm.sn }}</p>
+            <p>Atribuído Para: {{ crm.assigned_to }}</p>
+            <!-- Adicione mais informações do CRM conforme necessário -->
+        </div>
+
+        <!-- Modal -->
+        <div id="modal-crm-{{ crm.id }}" class="modal">
+            <div class="modal-content">
+                <span class="fechar" onclick="fecharModal('{{ crm.id }}')">&times;</span>
+                <h2>Detalhes do CRM</h2>
+                <p>Usuário: {{ crm.user }}</p>
+                <p>Modelo: {{ crm.model }}</p>
+                <p>SN: {{ crm.sn }}</p>
+                <p>Atribuído Para: {{ crm.assigned_to }}</p>
+                <p>Descrição:</p>
+                <p>{{ crm.description }}</p>
+                <p>Solução:</p>
+                <p>{{ crm.solution }}</p>
+                <!-- Adicione mais informações do CRM conforme necessário -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- JavaScript para controlar o modal -->
+    <script>
+        function abrirModal(id) {
+            var modal = document.getElementById('modal-crm-' + id);
+            modal.style.display = 'block';
+        }
+
+        function fecharModal(id) {
+            var modal = document.getElementById('modal-crm-' + id);
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

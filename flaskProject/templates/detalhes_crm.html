@@ -1,0 +1,57 @@
+<!-- templates/detalhes_crm.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do CRM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes do CRM</h1>
+
+        <!-- Balão de detalhes do CRM #1 -->
+        <div id="detalhes-crm-1" class="balao-detalhes">
+            <pre>{{ detalhes_crm_1 }}</pre>
+            <button class="fechar" onclick="fecharDetalhes('detalhes-crm-1')">X</button>
+        </div>
+
+        <!-- Balão de detalhes do CRM #2 -->
+        <div id="detalhes-crm-2" class="balao-detalhes">
+            <pre>{{ detalhes_crm_2 }}</pre>
+            <button class="fechar" onclick="fecharDetalhes('detalhes-crm-2')">X</button>
+        </div>
+
+        <div id="detalhes-crm-3" class="balao-detalhes">
+            <pre>{{ detalhes_crm_3 }}</pre>
+            <button class="fechar" onclick="fecharDetalhes('detalhes-crm-2')">X</button>
+        </div>
+
+        <div id="detalhes-crm-4" class="balao-detalhes">
+            <pre>{{ detalhes_crm_4 }}</pre>
+            <button class="fechar" onclick="fecharDetalhes('detalhes-crm-2')">X</button>
+        </div>
+
+        <div id="detalhes-crm-5" class="balao-detalhes">
+            <pre>{{ detalhes_crm_5 }}</pre>
+            <button class="fechar" onclick="fecharDetalhes('detalhes-crm-2')">X</button>
+        </div>
+
+
+        <br>
+        <a href="{{ url_for('listar_registros_ex') }}" class="btn">Voltar para Registros</a>
+    </div>
+
+    <!-- JavaScript para abrir e fechar os detalhes do CRM -->
+    <script>
+        function mostrarDetalhes(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function fecharDetalhes(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>

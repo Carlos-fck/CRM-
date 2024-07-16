@@ -1,0 +1,110 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #004b84; /* Cor de fundo ajustada para combinar com os botões */
+    color: white; /* Cor do texto geral */
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #004b84;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #004b84;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: black;
+    background-color: #fff; /* Cor de fundo dos campos de entrada */
+}
+
+.btn {
+    display: inline-block;
+    background-color: #004b84;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #79c9fa;
+}
+
+/* Estilo para os balões */
+/* styles.css */
+
+/* Estilo para os balões */
+.balao {
+    background-color: #3498db; /* Cor de fundo desejada */
+    color: #ffffff; /* Cor do texto */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transição suave para animação */
+}
+
+.balao:hover {
+    transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}
+
+/* Estilo para os detalhes do CRM */
+#detalhes-crm {
+    display: none; /* Esconde os detalhes inicialmente */
+    padding: 20px; /* Aumenta o padding para melhorar a visualização */
+    margin-top: 10px;
+    background-color: #3498db; /* Cor de fundo desejada */
+    color: #ffffff; /* Cor do texto */
+    border-radius: 5px;
+    position: fixed; /* Fixa a posição para centralizar */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza completamente */
+    z-index: 999; /* Garante que esteja acima de outros elementos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+/* Estilo para o botão fechar */
+.fechar {
+    position: absolute;
+    top: 10px; /* Ajusta a posição para o canto superior */
+    right: 10px; /* Ajusta a posição para o canto direito */
+    cursor: pointer;
+    color: #ffffff; /* Cor do texto */
+    font-size: 18px;
+    background: transparent;
+    border: none;
+}
+
+.fechar:hover {
+    color: #ff0000; /* Cor do texto ao passar o mouse */
+}
