@@ -41,8 +41,8 @@ def login_required(f):
     return decorated_function
 
 
-REGISTROS_DIR = os.path.join(app.static_folder, 'rex')
-REGISTROS_in_DIR = os.path.join(app.static_folder, 'rin')
+REGISTROS_DIR = os.path.join(app.static_folder, 'registros_ex')
+REGISTROS_in_DIR = os.path.join(app.static_folder, 'registros_in')
 
 os.makedirs(REGISTROS_DIR, exist_ok=True)
 os.makedirs(REGISTROS_in_DIR, exist_ok=True)
@@ -168,67 +168,65 @@ def proximo_numero_crm_in():
 def intro():
     return render_template('intro.html')
 
-"""
-@app.route('/register_crm', methods=['GET', 'POST'])
-@login_required
-def register_crm():
-    if request.method == 'POST':
-        print("entrei errado")
-        user = request.form['user']
-        model = request.form['model']
-        sn = request.form['sn']
-        description = request.form['description']
-        assigned_to = request.form['assigned_to']
 
-        crm_content = f"Usuário: {user}\nModelo: {model}\nSN: {sn}\nDescrição: {description}\nAtribuído Para: {assigned_to}"
-
-        numero_crm = proximo_numero_crm_ex()
-
+def Salva_texto(user1, model1, sn1, description1, assigned_to1, numero_crm1, In_Ex):
+    print("salvatexto")
+    user=user1
+    model=model1
+    sn=sn1
+    description=description1
+    assigned_to=assigned_to1
+    numero_crm=numero_crm1
+    crm_content = f"Usuário: {user}\nModelo: {model}\nSN: {sn}\nDescrição: {description}\nAtribuído Para: {assigned_to}"
+    print(crm_content)
+    print("In_Ex",In_Ex)
+    
+    if(In_Ex == 1):
         file_name = f"ex-crm#{numero_crm}.txt"
-
         file_path = os.path.join(REGISTROS_DIR, file_name)
-
         with open(file_path, 'w') as file:
             file.write(crm_content)
+            print("entrei if")
+        #return redirect(url_for('intro'))
+    if(In_Ex == 0):
+        file_name = f"in-crm#{numero_crm}.txt"
+        file_path = os.path.join(REGISTROS_in_DIR, file_name)
+        with open(file_path, 'w') as file:
+            file.write(crm_content)
+            print("entrei if")
+        #return redirect(url_for('intro'))
 
-        return redirect(url_for('intro'))
-
-    return render_template('index.html')
-"""
-#parei aq
-def registro_teste():
-    filenamet = f"crm teste"
-    filepath = os.path.join(REGISTROS_in_DIR, filenamet)
-    with open(filepath, 'w') as file:
-        file.write(crm_content1)
-#parei aq
-
-
-
-@app.route('/in', methods=['GET', 'POST'])
-@login_required
-def register_in_crm():
-    print('a')
+    
+    
+@app.route('/register_crm', methods=['GET', 'POST'])
+def register_crm():
+    In_Ex = 1
     if request.method == 'POST':
-        print("post da funcao in")
         user = request.form['user']
         model = request.form['model']
         sn = request.form['sn']
         description = request.form['description']
         assigned_to = request.form['assigned_to']
+        numero_crm = proximo_numero_crm_ex()
+        
+        print(" metodo post")
+        Salva_texto(user, model, sn, description, assigned_to, numero_crm, In_Ex)
 
-        crm_content1 = f"Usuário: {user}\nModelo: {model}\nSN: {sn}\nDescrição: {description}\nAtribuído Para: {assigned_to}"
-        print(crm_content1)
-        numero_crm1 = proximo_numero_crm_in()
+    return render_template('index.html')
 
-        file_name = f"in-crm#{numero_crm1}.txt"
-
-        file_path = os.path.join(REGISTROS_in_DIR, file_name)
-
-        with open(file_path, 'w') as file:
-            file.write(crm_content1)
-
-        return redirect(url_for('intro'))
+@app.route('/register_in_crm', methods=['GET', 'POST'])
+def register_in_crm():
+    In_Ex = 0
+    if request.method == 'POST':
+        user = request.form['user']
+        model = request.form['model']
+        sn = request.form['sn']
+        description = request.form['description']
+        assigned_to = request.form['assigned_to']
+        numero_crm = proximo_numero_crm_in()
+       
+        print(" metodo post")
+        Salva_texto(user, model, sn, description, assigned_to, numero_crm, In_Ex)
 
     return render_template('index_in.html')
 
@@ -240,4 +238,4 @@ def grafico():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port="14333")

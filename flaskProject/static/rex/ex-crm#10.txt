@@ -1,5 +1,0 @@
-Usuário: 1
-Modelo: 1
-SN: 11
-Descrição: 1
-Atribuído Para: Carlos Queiroz
